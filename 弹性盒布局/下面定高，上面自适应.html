@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下面定高，上面自适应</title>
+    <style>
+        body,html{
+            margin: 0;
+            height: 100%;
+        }
+        .container{
+            height: 100%;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .top{
+            height: 100px;
+            background-color: blueviolet;
+        }
+        .bottom{
+            flex: 1;
+            background-color:cyan;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top"></div>
+        <div class="bottom"></div>
+    </div>
+</body>
+</html>
