@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>防抖</title>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
+</head>
+<body> 
+    <button id="btn1">未添加了防抖</button>
+    <button id="btn2">自己实现的防抖</button>
+    <button id="btn3">loadsh实现的防抖</button>
+    <script>
+        function debounce(fn,wait=50,immediate) {
+            let timer;
+            return function() {
+                if(immediate) {
+                    fn.apply(this,arguments)
+                }
+                if(timer) clearTimeout(timer)
+                timer = setTimeout(()=> {
+                    fn.apply(this,arguments)
+                },wait)
+            }
+        }
+        function callback(){
+            console.log('我被点击了');
+        }
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oBtn3 = document.getElementById('btn3');
+        oBtn1.onclick = callback;
+        oBtn2.onclick = debounce(callback, 1000);
+        oBtn3.onclick = _.debounce(callback, 1000);
+
+    </script>
+</body>
+</html>
