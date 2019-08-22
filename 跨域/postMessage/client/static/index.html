@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>postMessage</title>
+</head>
+<body>
+
+    <div>我是爸爸</div>
+
+    <div style="margin: 20px 0;"><button id="button">发送信息给儿子</button></div>
+
+    <div></div><iframe id="iframe" src="//localhost:3000/static/index.html"></iframe></div>
+
+    <script>
+        let oButton = document.getElementById('button');
+        oButton.onclick = function(){
+            let oFrame = document.getElementById('iframe');
+            oFrame.contentWindow.postMessage('我是你爸爸', 'http://localhost:3000') //发送数据
+        }
+        window.onmessage = function(e) { 
+            //接受返回数据
+            console.log("儿子说：", e.data)
+        }
+    </script>
+    
+</body>
+</html>
