@@ -1,4 +1,5 @@
 const express = require('express')
+const request = require('request')
 
 // 创建服务器
 const app = express()
@@ -9,13 +10,17 @@ app.get('/', function (req, res) {
 })
 
 app.get('/data', function (req, res) {
-  console.log(req.query.callback)
-  var result = {
-    "name": "tom",
-    "age": 13
-  }
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.send(JSON.stringify(result));
+
+  //转发请求
+  request('http://127.0.0.1:5000/data', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      // 设置允许跨域
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      //返回值
+      res.send(body);
+    }
+  });
+  
 })
 
 // 在 express 中 开放资源 就是一个 api 的事

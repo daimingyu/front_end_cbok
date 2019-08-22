@@ -22,6 +22,6 @@ app.use('/static/', express.static('./static/'))
 // http://localhost:3000/static/loading.gif 即可访问图片
 
 // 建立监听端口 相当于 server.listen
-app.listen(3000, function () {
-  console.log('app is running at http://localhost:3000')
+app.listen(4000, function () {
+  console.log('app is running at http://localhost:4000')
 })
