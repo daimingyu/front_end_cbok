@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Sql</title>
+</head>
+<body>
+    <script>
+        var db = window.openDatabase('testDB', '1.0', 'TestDb', 2 * 1024 * 1024);
+        db.transaction(function (context) {
+            context.executeSql('CREATE TABLE IF NOT EXISTS cubefe(id, name)');
+            context.executeSql('INSERT INTO cubefe (id, name) VALUES (1, "doctorhou")');
+        }); 
+    </script>
+</body>
+</html>

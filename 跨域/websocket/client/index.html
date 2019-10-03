@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>websocket</title>
+    <script>
+        let socket = new WebSocket('ws://10.252.189.116:3000');
+        socket.onopen = function () {
+            socket.send('我爱你');//向服务器发送数据
+        }
+        socket.onmessage = function (e) {
+            console.log(e.data);//接收服务器返回的数据
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
